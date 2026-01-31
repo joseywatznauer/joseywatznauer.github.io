@@ -1,0 +1,63 @@
+<!--
+  Used phrasing elements:
+    var, code, br, kbd, samp, strong, dfn, sub, sup, abbr, dfn, cite, and q
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>Program Explanation</title>
+</head>
+
+<body>
+<h2>Recursive Mapping Fibonacci Sequence Python Program</h2>
+<hr>
+<p>
+  In mathematics, the Fibonacci Sequence is a sequence in which each element is the sum of the two elements that precede it.
+  Originating from Italian mathematician Fibonacci's 1202 book <cite>Liber Abaci</cite>, the original problem concerned 
+  the reproduction of rabbits under perfect circumstances, and today, the "Golden Ratio" that the sequence produces is 
+  known to appear often in nature.<br>
+  The Fibonacci sequence is as follows:
+</p>
+<blockquote>
+  <var>F<sub>n</sub></var> = <var>F<sub>n-1</sub></var> + <var>F<sub>n-2</sub></var>
+</blockquote>
+<p>The following is a Python program that calculates the requested Fibonacci sequence value:</p>
+  <blockquote>
+    <code>
+      <pre>
+        fibMap = {}
+
+        def fib(n):
+            if n < 3: #because first two values of the sequence are 1
+                return 1
+            elif n in fibMap.keys():
+                return fibMap[n]
+            else:
+                result = fib(n-1) + fib(n - 2)
+                fibMap[n] = result
+                return result
+            
+        inputNum = int(input("Which value of the Fibonacci sequence would you like? "))
+        answer = fib(inputNum)
+        print("Answer: ", str(answer))
+      </pre>
+    </code>
+  </blockquote>
+<p>
+  The program prompts the user for whichever value in the sequence they would like to see.
+  If the user were to request the 6<sup>th</sup> value, he or she would enter <kbd>6</kbd>,
+  and this value would be assigned to <var>inputNum</var>. When the recursive function reaches the base case,
+  the program would output <samp>Answer: 8</samp>, because 8 is the 6<sup>th</sup> value of the Fibonacci sequence.<br>
+  This program, known as <abbr title="Recursive Mapping Fibonacci Sequence Python Program">RMFSPP</abbr>, finds the Fibonacci sequence value using recursion.
+  <dfn>Recursion</dfn> refers to a function that calls itself. This specific recursive program stores the known values
+  in a dictionary so each time the "previous" value is needed to find the next value, it can find it in
+  the dictionary instead of redoing all of the previous calcutions. <strong>This saves exponential amounts of time and processing power.</strong><br>
+  As explained in <cite>Why the RMFSPP is the Best Program Ever</cite>, <q>The RMFSPP saves mathematicians and 
+  bunny breeders time and work that can be better spent cuddling bunnies by calculating the Fibonacci sequence 
+  values almost instantaneously, thanks to the combined benefits of recursion and Python dictionaries.</q> 
+</p>
+</body>
+</html>
