@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>Food Pyramid</title>
+<style>
+  body {font-family: serif;}
+  thead {background-color: #258B5A; color: white}
+  .group {font-weight: bold;}
+  .examples {font-style: italic;}
+  td:nth-child(2), td:nth-child(3) {text-align: center;}
+  table {
+    width: 50%; 
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: thin solid black;
+  }
+  th, td {
+    border: thin solid black;
+    padding: 10px;
+  }
+  h1 {font-weight: normal;}
+  caption {margin: -10px;}
+</style>
+</head>
+
+<body>
+<table>
+  <caption><h1>USDA Food Pyramid</h1></caption> <!-- header tag? -->
+  <thead>
+    <tr><th></th><th colspan="2">Serving Guidelines</th></tr>
+    <tr><th>Food Group</th><th>2005-2010</th><th>2011-present</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="group">Dairy</span><br><span class="examples">(milk, yogurt, cheese)</span></td><td>2-3</td><td>3-4</td></tr>
+    <tr><td><span class="group">Meat and Beans</span><br><span class="examples">(beef, poultry, fish, beans)</span></td><td>2-3</td><td>5-6</td></tr>
+    <tr><td><span class="group">Fruits</span></td><td>2-4</td><td>2-4</td></tr>
+    <tr><td><span class="group">Vegetables</span></td><td>3-5</td><td>1-2</td></tr>
+    <tr><td><span class="group">Grains</span><br><span class="examples">(bread, donuts, pop tarts)</span></td><td>1-2</td><td>3-5</td></tr>
+  </tbody>
+</table>
+</body>
+</html>
