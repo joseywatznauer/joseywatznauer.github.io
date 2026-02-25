@@ -14,3 +14,18 @@ p {
   padding: 0px 20px;
   text-align: justify;
 }
+/* Rules for interpage navigation */
+nav ul {
+  list-style-type: none;
+  text-align: center;
+  padding-left: 0px;
+}
+nav li {
+  display: inline-block;
+  padding: 0px 4px 2px 4px;
+  margin: 2px 4px 2px 4px;
+  background-color: lightgoldenrodyellow;
+  border: outset;
+  border-color: lightgreen;
+}
+nav a {text-decoration: none;}
