@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>Must-See Coffee Shops</title>
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    grid-template-areas:
+      "header header"
+      "cell-one cell-two"
+      "cell-three cell-four"
+      "cell-five cell-six"
+  }
+  header {grid-area: header;}
+  cell-one {grid-area: cell-one;}
+  cell-two {grid-area: cell-two;}
+  cell-three {grid-area: cell-three;}
+  cell-four {grid-area: cell-four;}
+  cell-five {grid-area: cell-five;}
+  cell-six {grid-area: cell-six;}
+  ul li {list-style-type: none;}
+  h2 {
+    font-weight: normal;
+    float: right;
+  }
+  nav a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+  nav a:hover {background-color: silver;}
+  img {
+    margin-top: 20px;
+    width: 60%
+  }
+  .hannibal-shops {margin-left: -20px;}
+  .quincy-shops {margin-left: -20px;}
+  .palmyra-shops {margin-left: -20px;}
+</style>
+</head>
+
+<body>
+<div class="grid">
+  <header>
+    <h1>Must-See Coffee Shops</h1>
+    <nav>
+      <div>
+        <a href="#hannibal">Hannibal</a> |
+        <a href="#quincy">Quincy</a> |
+        <a href="#palmyra">Palmyra</a><br>
+        <img src="https://ea0405fad5f902b295e6.cdn6.editmysite.com/uploads/b/ea0405fad5f902b295e60cc4e89c84fefde22dc03b838d1b85ff5fa710de5237/JavaJiveSE-11_1654721834.jpg?width=2400&optimize=medium" alt="Java Jive">
+      </div>
+    </nav>
+  </header>
+  <cell-one>
+    <h2 class="hannibal">Hannibal:</h2>
+  </cell-one>
+  <cell-two class="hannibal-shops">
+    <ul>
+      <li><a href="https://www.javajive.coffee/">Java Jive</a></li>
+      <li><a href="https://www.mimicoffeehouse.com/">MiMi's Coffee House & Ice Cream</a></li>
+    </ul>
+  </cell-two>
+  <cell-three>
+    <h2 id="quincy">Quincy:</h2>
+  </cell-three>
+  <cell-four class="quincy-shops">
+    <ul>
+      <li><a href="https://www.themercantilesweetsandgoods.com/">The Mercantile Sweets & Goods</a></li>
+      <li><a href="https://www.baileyscoffeeandfudge.com/">Bailey's Coffeehouse and Fudge Shop</a></li>
+    </ul>
+  </cell-four>
+  <cell-five>
+    <h2 id="palmyra">Palmyra:</h2>
+  </cell-five>
+  <cell-six class="palmyra-shops">
+    <ul>
+      <li><a href="https://www.hebrewsxicoffee.com/">Hebrew's XI Coffee</a></li>
+      <li><a href="https://carterscoffeebar.com/">Carter's Coffee Bar</a></li>
+    </ul>
+  </cell-six>
+</div>
+</body>
+</html>
