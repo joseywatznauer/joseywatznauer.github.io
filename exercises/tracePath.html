@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Trace Path</title>
+<style>
+  body {position: relative;}
+
+  .tracer {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 100px;
+    height: 30px;
+    border: solid blue;
+    color: blue;
+    font: 1.5em Helvetica, sans-serif;
+    text-decoration: none;
+    padding: 2px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+  }
+
+  .rectangle {
+    position: absolute;
+    /* left value = tracer left value + .5 * tracer width */
+    left: 70px;
+    /* top value = tracer top value + .5 * tracer height */
+    top: 35px;
+    width: 350px;
+    height: 150px;
+    border: dashed 5px;
+  }
+
+  .tracer:focus {
+    background-color: bisque;
+    animation: tracer 4s linear forwards;
+  }
+  @keyframes tracer {
+    0% {
+      left: 20px;
+      top: 20px;
+    }
+    35% {
+      left: 370px;
+      top: 20px;
+    }
+    50% {
+      left: 370px;
+      top: 170px;
+    }
+    85% {
+      left: 20px;
+      top: 170px;
+    }
+    100% {
+      top: 20px;
+      left: 20px;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="rectangle"></div>
+<a class="tracer" href="#">click me</a>
+</body>
+</html>
