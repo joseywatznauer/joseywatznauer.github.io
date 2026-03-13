@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>Animal Alphabet</title>
+<link rel="icon" href="icon.png">
+<style>
+  @font-face {
+    font-family: "SunshineSmiles";
+    src: url("SunshineSmiles.ttf") format("truetype");
+  }
+
+  body {
+    font-family: "SunshineSmiles", "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+    background-image: url(background.png);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    margin: 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    text-align: center;
+  }
+
+  header {
+    grid-column: 1 / span 3;
+    font-size: 92px;
+    padding: 15px;
+    font-family: "SunshineSmiles", "Comic Sans MS", cursive;
+    color: darkcyan;
+  }
+
+  nav {
+    grid-column: 1 / span 3;
+    font-size: 45px;
+    padding: 10px;
+    color: darkcyan;
+  }
+
+  span {
+    font-size: 60px;
+  }
+
+  footer {
+    grid-column: 1 / span 3;
+    padding: 15px;
+    border-top: 4px dotted darkcyan;
+    font-size: x-large;
+  }
+
+  .grid > img, .grid > span, .grid > audio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-top: 4px dotted darkcyan;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  nav a {
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color .4s;
+  }
+
+  #a, #link-a, #link-a:visited {color: red; }
+  #b, #link-b, #link-b:visited {color: orange; }
+  #c, #link-c, #link-c:visited {color: green; }
+  #d, #link-d, #link-d:visited {color: blue; }
+  #e, #link-e, #link-e:visited {color: purple; }
+
+  #link-a:hover {background: rgba(255,0,0,.3); }
+  #link-b:hover {background: rgba(255,165,0,.3); }
+  #link-c:hover {background: rgba(0,128,0,.3); }
+  #link-d:hover {background: rgba(0,0,255,.3); }
+  #link-e:hover {background: rgba(128,0,128,.3); }
+</style>
+</head>
+
+<body>
+<div class="grid">
+  <header id="top">Animal Alphabet</header>
+  <nav>
+    <a href="#a" id="link-a">A</a> |
+    <a href="#b" id="link-b">B</a> |
+    <a href="#c" id="link-c">C</a> |
+    <a href="#d" id="link-d">D</a> |
+    <a href="#e" id="link-e">E</a>
+  </nav>
+  <!-- Alpaca -->
+  <img src="alpaca.png" alt="Alpaca">
+  <span id="a">"A"<br>is for<br>Alpaca</span>
+  <audio src="alpaca.mp3" preload="auto" controls></audio>
+  <!-- Bat -->
+  <span id="b">"B"<br>is for<br>Bat</span>
+  <audio src="bat.mp3" preload="auto" controls></audio>
+  <img src="bat.png" alt="Bat">
+  <!-- Chicken -->
+  <img src="chicken.png" alt="Chicken">
+  <span id="c">"C"<br>is for<br>Chicken</span>
+  <audio src="chicken.mp3" preload="auto" controls></audio>
+  <!-- Donkey -->
+  <span id="d">"D"<br>is for<br>Donkey</span>
+  <audio src="donkey.mp3" preload="auto" controls></audio>
+  <img src="donkey.png" alt="Donkey">
+  <!-- Eagle -->
+  <img src="eagle.png" alt="Eagle">
+  <span id="e">"E"<br>is for<br>Eagle</span>
+  <audio src="eagle.mp3" preload="auto" controls></audio>
+  <footer>
+    <a href="#top">Back to top</a>
+  </footer>
+</div>
+</body>
+</html>
