@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>Sentence Builder</title>
+<style>
+  @font-face {
+      font-family: "ShinyCrystal";
+      src: url("fonts/ShinyCrystal.ttf") format("truetype");
+    }
+  
+  @font-face {
+    font-family: "ColleenCursive";
+    src: url("fonts/ColleenCursive.woff") format("woff");
+  }
+
+  #sentence {
+    font-family: "ShinyCrystal", "ColleenCursive", "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+    font-size: 2.5em;
+    color: #ff6347;
+    }
+  
+  p {color: red; font-weight: bold;}
+</style>
+<script>
+  // This function adds a word to the sentence and clears the form
+  function addWord(form) {
+    document.getElementById("sentence").innerHTML =
+      document.getElementById("sentence").innerHTML + " " +
+      form.elements["word"].value;
+    form.reset();
+    form.elements["word"].focus();
+  } // end addWord
+
+  // This function clears the printed sentence and the form
+  function startOver(form) {
+    const blank = "";
+    document.getElementById("sentence").innerHTML = blank;
+    form.reset();
+    form.elements["word"].focus();
+  } // end startOver
+</script>
+</head>
+
+<body>
+<noscript>
+  <p>
+    This web page uses JavaScript. You must
+    use a web browser with JavaScript enabled.
+  </p>
+</noscript>
+<h1>
+  Sentence Builder
+</h1>
+<form>
+  Add a word to your sentence:
+  <input type="text" id="word" size="15" autofocus>
+  <br>
+  <br>
+  <input type="button" value="Add Word"
+    onclick="addWord(this.form);">
+  <input type="button" value="Start Over"
+    onclick="startOver(this.form);">
+</form>
+<p id="sentence"></p>
+</body>
+</html>
