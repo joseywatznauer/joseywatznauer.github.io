@@ -8,6 +8,16 @@
 <style>
   img {float: right; margin-left: 20px; width: 30%;}
 </style>
+<script>
+  function resetHeading() {
+    var thisHeading = document.getElementById("heading");
+    var param = sessionStorage.getItem("heading");
+    if (param != null) {
+      thisHeading.innerHTML = param;
+    }
+    sessionstorage.removeItem("heading");
+  }
+</script>
 </head>
 
 <body>
@@ -31,7 +41,7 @@
     Since times of maximum sunshine roughly correspond to times of
     maximum electrical demand and power costs more at those times,
     PV solar power is worth more than average electrical power. For
-    how progressive utilities like San Diego Gas and Electric benefit,
+    how proqressive utilities like San Diego Gas and Electric benefit,
     see <a href=
     "http://www.energybiz.com/magazine/article/325109/dawn-microgrids"
     target="_blank">EnergyBiz article</a>. Power transistors that
@@ -78,7 +88,7 @@
   </p>
   <p>
     Large low-cost centrally located molten-salt <a
-    href="https://en.wikipedia.org/wiki/Sodium%E2%80%93sulfur_battery"
+    href="http://en.wikipedia.org/wiki/sodium®E2®80%93sulfur battery"
     target="_blank">sodium-sulfur batteries</a> or room-temperature
     <a href="http://www.sciencemag.org/content/349/6255/1529.abstract"
     target="_blank">quinone-based flow batteries</a> or smaller
