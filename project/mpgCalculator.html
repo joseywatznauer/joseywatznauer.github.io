@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>MPG Calculator</title>
+<style>
+  .italic {font-style: italic;}
+</style>
+<script>
+  // This function calculates and displays the user's MPG
+  // based on the inputted values
+  function calculateMPG(form) {
+    var first;
+    var second;
+    var gallons;
+    var milesBoxOne, milesBoxTwo, gallonsBox;
+    var calculatedMPG;
+    var message;
+    var twoGreaterThanOne;
+
+    milesBoxOne = form.elements["first"];
+    milesBoxTwo = form.elements["second"];
+    gallonsBox = form.elements["gallons"];
+    calculatedMPG = form.elements["calculated"];
+    message = "";
+    twoGreaterThanOne = (milesBoxTwo.valueAsNumber > milesBoxOne.valueAsNumber);
+
+    if (!milesBoxOne.checkValidity()) {
+      message += "Invalid entry for the first odometer reading. Must be an integer between " 
+        + milesBoxOne.min + " and " + milesBoxOne.max + ".\n\n";
+    }
+    if (!milesBoxTwo.checkValidity()) {
+      message += "Invalid entry for the second odometer reading. Must be an integer between " 
+        + milesBoxTwo.min + " and " + milesBoxTwo.max + "\n\n";
+    }
+    if (!twoGreaterThanOne) {
+      message += "Invalid odometer entries. The first value cannot be greater than the second value.\n\n";
+    }
+    if (!gallonsBox.checkValidity()) {
+      message += "Invalid entry for gallons. Must be between " 
+        + gallonsBox.min + " and " + gallonsBox.max + " with a maximum of one decimal place.";
+    }
+    if (message != "") {
+      alert(message);
+    }
+    // If all entries are valid, output the result.
+    if (milesBoxOne.checkValidity() && milesBoxTwo.checkValidity() && gallonsBox.checkValidity() && twoGreaterThanOne) {
+      first = milesBoxOne.valueAsNumber;
+      second = milesBoxTwo.valueAsNumber;
+      gallons = gallonsBox.valueAsNumber;
+
+      calculatedMPG.value =  ((second - first) / gallons).toFixed(2);
+    }
+  } // end calculateMPG
+
+  // This function resets the form.
+  function reset(form) {
+    form.reset();
+  } // end reset
+</script>
+</head>
+
+<body>
+<h2>Miles Per Gallon Calculator</h2>
+<p>
+  The next two times you go to the gas station, fill up your tank
+  completely and record your odometer's mileage values. At the 
+  second fill-up, record the number of gallons purchased. Then
+  enter your three recorded values below and click the
+  <span class="italic">Calculate</span> button.<br>
+</p>
+<form id="myForm">
+  <label for="first">First odometer reading (in miles):</label>
+  <input type="number" id="first"
+    min="0" max="400000" step="1" required><br><br>
+  <label for="second">Second odometer reading (in miles):</label>
+  <input type="number" id="second"
+    min="0" max="400000" step="1" required><br><br>
+  <label for="gallons">Gallons:</label>
+  <input type="number" id="gallons"
+    min="0" max="40" step=".1" required><br><br>
+  <label for="calculated">Calculated MPG:</label>
+  <input type="number" id="calculated" name="calculated" disabled><br>
+</form>
+<br>
+<div>
+  <input type="button" form="myForm" value="Calculate"
+    onclick="calculateMPG(this.form);">
+  <input type="button" form="myForm" value="Reset"
+    onclick="reset(this.form);">
+</div>
+</body>
+</html>
