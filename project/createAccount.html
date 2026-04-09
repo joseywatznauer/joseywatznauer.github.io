@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>Create Account</title>
+<style>
+  .grid {
+    display: inline-grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 6px 9px;
+    margin: 10px 0 20px 0;
+    text-align: right;
+  }
+  #reset {margin-left: 9px;}
+  .invalid {background-color: lightpink;} /*Fields are invalid by default*/
+  .valid {background-color: lightgreen;}
+  #questions {grid-column: span 2;}
+  h3 {margin-bottom: 0px;}
+</style>
+<script>
+  // This function checks if the entries are valid and prints them
+  function validate(form) {
+    var nameBox;           //Each box will be checked for validity
+    var usernameBox;
+    var passwordBox;
+    var emailBox;
+    var phoneBox;
+    var questionsBox;
+    var validityCount = 0; //To check if all fields are valid via count
+    var msg = "";          //This message will be printed
+
+    nameBox = form.elements["name"];
+    usernameBox = form.elements["username"];
+    passwordBox = form.elements["password"];
+    emailBox = form.elements["email"];
+    phoneBox = form.elements["phone"];
+    questionsBox = form.elements["questions"];
+
+    questions = form.elements["questions"];
+
+    if (nameBox.checkValidity()) {
+      document.getElementById("name").className = "valid";
+      validityCount++;
+    }//end if
+    if (usernameBox.checkValidity()) {
+      document.getElementById("username").className = "valid";
+      validityCount++;
+    }//end if
+    if (passwordBox.checkValidity()) {
+      document.getElementById("password").className = "valid";
+      validityCount++;
+    }//end if
+    if (emailBox.checkValidity()) {
+      document.getElementById("email").className = "valid";
+      validityCount++;
+    }//end if
+    if (phoneBox.checkValidity()) {
+      document.getElementById("phone").className = "valid";
+      validityCount++;
+    }//end if
+    if (questionsBox.checkValidity()) {
+      document.getElementById("questions").className = "valid";
+      validityCount++;
+    }//end if
+
+    if (validityCount == 6) {
+      msg +=
+        "<h3>Review your entries:</h3>" +
+        "Name: " + form.elements["name"].value + "<br>" +
+        "Username: " + form.elements["username"].value + "<br>" +
+        "Password: " + form.elements["password"].value + "<br>" +
+        "Email address: " + form.elements["email"].value + "<br>" +
+        "Phone number: " + form.elements["phone"].value + "<br>" +
+        "<strong>Security questions:</strong><br>";
+      for (let option of questions.selectedOptions) {
+        msg += option.value + "<br>";
+      }
+      document.getElementById("msg").innerHTML = msg;
+    }//end if
+    else {
+      document.getElementById("msg").innerHTML =
+        "One or more of your entries is invalid. " + 
+        "Please correct the red boxes.";
+    }//end if
+  } // end validate
+
+  //This function resets the style of the form and clears the message
+  function resetStyles() {
+    var form = document.getElementById("input");
+
+    document.getElementById("email").className = "invalid";
+    document.getElementById("phone").className = "invalid";
+    document.getElementById("questions").className = "invalid";
+    document.getElementById("password").className = "invalid";
+    document.getElementById("username").className = "invalid";
+    document.getElementById("name").className = "invalid";
+
+    document.getElementById("msg").innerHTML = "";
+  }//end resetStyles
+</script>
+</head>
+
+<body>
+<header>
+  <h1>Create an Account</h1>
+  <p>
+    All fields are required. Enter appropriate values in the text boxes.
+    Select one or more security questions. Then click the Done button
+    to review your choices.
+  </p>
+</header>
+
+<form class="grid" id="input">
+  <label for="name">Full name:</label>
+  <input type="text" id="name" name="name" class="invalid"
+    size="15" required>
+  <span></span>
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" class="invalid"
+    size="15" required>
+  <span></span>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" class="invalid"
+    size="15" required>
+  <span></span>
+  <label for="email">Email address:</label>
+  <input type="email" id="email" name="email" class="invalid"
+    size="15" required>
+  <span></span>
+  <label for="phone">Phone number:</label>
+  <input type="tel" id="phone" name="phone" placeholder="123-456-7890"
+    class="invalid" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" size="15" required>
+  <span></span>
+  <label for="questions">Security questions:</label>
+  <select id="questions" name="questions" multiple size="8"
+    class="invalid" required>
+    <option>What was the name of your first childhood pet?</option>
+    <option>What was your first job?</option>
+    <option>What is your mother's maiden name?</option>
+    <option>What is your favorite TV show?</option>
+    <option>What is the name of the street you grew up on?</option>
+    <option>Where were you born?</option>
+    <option>What is your favorite sport?</option>
+    <option>What is your dream vacation?</option>
+  </select>
+</form>
+<br>
+<input type="button" form="input" value="Done"
+  onclick="validate(this.form);">
+<input type="reset" id="reset" form="input"
+  value="Reset" onclick="resetStyles();">
+<br><br>
+<div id="msg"></div>
+</body>
+</html>
