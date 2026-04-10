@@ -84,10 +84,10 @@ function displayList() {
       bookMtgList[i].getDate().toDateString() +
       ":</span>";
 
-    listContent += "<span>" +
+    listContent += "<div><span>" +
       bookMtgList[i].bookMtgEntry().split("</span>")[1] +
       " <button onclick='deleteMtg(" + i + ")'>Delete</button>" +
-      "</span>";
+      "</span></div>";
   }
 
   document.getElementById("list").innerHTML = listContent;
@@ -95,7 +95,7 @@ function displayList() {
 
 //*********************************************
 
-// Delete the meeting from the array
+// Delete the meeting
 
 function deleteMtg(index) {
   bookMtgList.splice(index, 1); // remove the selected meeting
