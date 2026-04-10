@@ -25,19 +25,19 @@ class Point {
     if (Point.#count < 2) {
       Point.#count++;
     }
-  }
+  } //end constructor
 
   value() {
     return "(" + this.#x + ", " + this.#y + ")";
-  }
+  } //end value
 
-  getX() { return this.#x; }
-  getY() { return this.#y; }
-  getColor() { return this.#color; }
+  getX() { return this.#x; } //end getX
+  getY() { return this.#y; } //end getY
+  getColor() { return this.#color; } //end getColor
 
   static getCount() {
     return Point.#count;
-  }
+  } //end getCount
 
   static distance(pt1, pt2) {
     if (Point.#count < 2) return null;
@@ -45,8 +45,8 @@ class Point {
     const xDist = pt1.#x - pt2.#x;
     const yDist = pt1.#y - pt2.#y;
     return Math.sqrt(xDist * xDist + yDist * yDist);
-  }
-}
+  } //end distance
+} // end class Point
 
 //***************************************************
 
@@ -63,7 +63,7 @@ function drawPoint(point, elementId) {
   whicheverPoint.style.backgroundColor = point.getColor(); // Cycles through the colors
   whicheverPoint.style.border = "1px solid black";
   whicheverPoint.style.borderRadius = "50%"; // Makes it a circle
-}
+} //end drawPoint
 
 //***************************************************
 
@@ -89,7 +89,7 @@ function captureClick(e) {
     drawPoint(point1, "pt1Graphic");
     drawPoint(point2, "pt2Graphic");
   }
-}
+} //end captureClick
 
 //***************************************************
 
@@ -106,4 +106,4 @@ function displayDistance(e) {
   }
 
   document.getElementById("message").innerHTML = message;
-}
+} //end displayDistance
