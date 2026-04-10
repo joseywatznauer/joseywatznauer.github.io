@@ -95,7 +95,7 @@ function displayList() {
 
 //*********************************************
 
-// Delete the meeting
+// Delete the meeting from the array
 
 function deleteMtg(index) {
   bookMtgList.splice(index, 1); // remove the selected meeting
