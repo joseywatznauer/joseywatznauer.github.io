@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Josey Watznauer">
+    <title>Stunt Group</title>
+    <script>
+        class Cheerleader {
+            #name;
+            #height;
+
+            constructor(name, height) {
+                this.#name = name;
+                this.#height = parseFloat(height); //as a float
+            } //end constructor
+
+            getName() {return this.#name;} //end getName
+            getHeight() {return this.#height;} //end getHeight
+        } //end class Cheerleader
+
+        var stuntGroup = new Array();
+
+        function addCheerleader() {
+            var nameInput = document.getElementById("cheerleader").value;
+            var heightInput = document.getElementById("height").value;
+
+            if (nameInput && heightInput) {
+                var newCheerleader = new Cheerleader(nameInput, heightInput);
+                stuntGroup.push(newCheerleader);
+
+                stuntGroup.sort((a, b) => a.getHeight() - b.getHeight()); //ascending order
+
+                document.getElementById("cheerleader").value = "";
+                document.getElementById("height").value = "";
+            }
+        } //end addCheerleader
+
+        function displayStuntGroup() {
+            var displayColumn = "";
+            for (let i = 0; i < stuntGroup.length; i++) {
+                displayColumn += stuntGroup[i].getName() + " (" + stuntGroup[i].getHeight() + " cm)<br>";
+            }
+            document.getElementById("stunt-group").innerHTML = displayColumn;
+        } //end displayStuntGorup
+    </script>
+</head>
+
+<body>
+    Name: <input type="text" id="cheerleader"><br>
+    Height (cm): <input type="number" id="height"><br>
+    <input type="button" value="Add Cheerleader" onclick="addCheerleader();">
+    <br><br>
+    <input type="button" value="Display stunt group" onclick="displayStuntGroup();">
+    <div id="stunt-group"></div>
+</body>
+</html>
