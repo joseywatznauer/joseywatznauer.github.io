@@ -25,7 +25,7 @@ function createHeaderFooter() {
   ul.appendChild(li);
   li = getli("services.html", "Electric Power Services");
   ul.appendChild(li);
-  li = getli("#", "Downtown Properties");
+  li = getli("properties.html", "Downtown Properties");
   ul.appendChild(li);
   li = getli("#", "Solar Shadowing");
   ul.appendChild(li);
