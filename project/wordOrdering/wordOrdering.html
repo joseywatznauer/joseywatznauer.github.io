@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<title>Word Ordering</title>
+<style>
+  .button {margin-right: 7px;}
+</style>
+<script src="wordOrdering.js"></script>
+</head>
+
+<body>
+<h1>Word Ordering</h1>
+<h3>Enter a list of words seperated by a space.</h3>
+<form>
+  <label for="wordList">Word list:</label>
+  <input type="text" id="wordList" size="45" autofocus><br><br>
+  <input type="button" class="button" value="Alphabetical"
+    onclick="alphabetical(this.form);">
+  <input type="button" class="button" value="Reverse alphabetical"
+    onclick="reverseAlphabetical(this.form);">
+  <input type="button" class="button" value="Random"
+    onclick="random(this.form);">
+</form>
+<br>
+<div id="printedList"></div>
+</body>
+</html>
