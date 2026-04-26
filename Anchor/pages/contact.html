@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anchor Counseling</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="stylesheet" href="../library/anchor.css">
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "aside"
+      "form"
+      "footer";
+  }
+
+  @media (min-width: 769px) {
+    .grid {
+      column-gap: 20px;
+      grid-template-columns: 1fr 2fr;
+      grid-template-areas:
+        "nav      nav"
+        "aside   blank"
+        "form     form"
+        "footer   footer";
+    }
+
+    .form {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(11, 1fr);
+      position: relative;
+    }
+
+    .form .blue-block {
+      grid-column: 1 / 6;
+      grid-row: 1;
+      background-color: #4389c0;
+      z-index: 1;
+    }
+
+    .form form {
+      grid-column: 6 / 24;
+      grid-row: 1 / 11;
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {font-size: 2.5em;}
+    p{font-size: 1.5em;}
+    input[type="button"] {font-size: 1.75em;}
+    th {font-size: 1.75em;}
+    th, td {padding: 12px;}
+
+    table {
+      border-top: 25px solid #d5ad37;
+      border-right: 25px solid #d5ad37;
+      border-left: 25px solid #d5ad37;
+      border-bottom: 25px solid #d5ad37;
+      margin-bottom: 40px;
+    }
+  }
+
+  nav {grid-area: nav;}
+  aside {grid-area: aside;}
+  .blank {grid-area: blank;}
+  .form {grid-area: form;}
+  footer {grid-area: footer;}
+
+  body {
+    font-family: "Spectral", serif;
+  }
+
+  h1 {text-align: center;}
+
+  p {line-height: 1.15;}
+
+  aside {
+    background-color: #4389c0;
+    color: #d8eaf9;
+    padding: 0 60px;
+    text-align: justify;
+  }
+
+  table {
+    background-color: #d5ad37;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    text-align: left;
+    vertical-align: top;
+    width: 25%;
+  }
+
+  td {
+    width: 75%;
+  }
+
+  input,
+  textarea {
+    border-radius: 0;            /* square corners */
+    background-color: #f4f2c9;   /* fill color */
+    border: none;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input[type="button"] {
+    background-color: #27599a;
+    color: #d8eaf9;
+    border: none;
+    padding: 10px 50px;
+    cursor: pointer;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 0px; /* pulls it halfway out */
+    transform: translateX(-50%);
+  }
+
+  
+  /* ===================== */
+  /* MOBILE STYLES */
+  /* ===================== */
+  @media (max-width: 768px) {
+    .form {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      grid-template-rows: repeat(11, 1fr);
+      position: relative;
+    }
+    
+    .form .blue-block {
+      grid-column: 1 / 25;
+      grid-row: 1;
+      background-color: #4389c0;
+      z-index: 1;
+    }
+
+    .form form {
+      grid-column: 2 / 24;
+      grid-row: 1 / 11;
+      z-index: 1;
+      position: relative;
+    }
+    
+    h1 {font-size: 2em;}
+    p{font-size: 1.2em;}
+    input[type="button"] {font-size: 1.2em;}
+    th {font-size: 1.2em;}
+    th, td {padding: 6px;}
+
+    table {
+      border-top: 10px solid #d5ad37;
+      border-right: 10px solid #d5ad37;
+      border-left: 10px solid #d5ad37;
+      border-bottom: 10px solid #d5ad37;
+      margin-bottom: 40px;
+    }
+  }
+</style>
+<script src="../library/anchor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("Edpbb7RVwPXmhBn0c"); // from EmailJS
+  })();
+
+  function sendForm() {
+
+    // ✅ Collect inputs into array (this satisfies your "loop" requirement)
+    var fields = ["first", "last", "email", "phone", "subject", "message"];
+    var data = {};
+    var valid = true;
+
+    // ✅ Loop for validation
+    for (var i = 0; i < fields.length; i++) {
+      var value = document.getElementById(fields[i]).value.trim();
+
+      if (value === "") {
+        alert("Please fill out the " + fields[i] + " field.");
+        valid = false;
+        break;
+      }
+
+      data[fields[i]] = value;
+    }
+
+    if (!valid) return;
+
+    // ✅ Simple email validation
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(data.email)) {
+      alert("Please enter a valid email.");
+      return;
+    }
+
+    // ✅ Send via EmailJS
+    emailjs.send("anchorcounseling", "anchorcounselingtemplate", {
+      first_name: data.first,
+      last_name: data.last,
+      email: data.email,
+      phone: data.phone,
+      subject: data.subject,
+      message: data.message
+    })
+    .then(function(response) {
+
+      // ✅ Replace form with success message
+      var formContainer = document.querySelector(".form form");
+
+      formContainer.innerHTML = `
+        <div style="
+          background-color:#d5ad37;
+          padding:60px;
+          text-align:center;
+          font-size:1.5em;
+          color:#281e00;
+        ">
+          Your message was sent successfully.<br>
+          We will be in contact with you shortly.
+        </div>
+      `;
+
+    }, function(error) {
+      alert("Something went wrong. Please try again.");
+    });
+  }
+</script>
+</head>
+
+<body onload="createHeaderFooter();">
+<div class="grid">
+  <aside>
+    <h1>Contact</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+    </p>
+  </aside>
+  <div class="blank"></div>
+  <div class="form">
+    <div class="blue-block"></div>
+    <form>
+      <table>
+        <tr><th><label for="first">First Name</label></th><td><input id="first" type="text" required></td></tr>
+        <tr><th><label for="last">Last Name</label></th><td><input id="last" type="text" required></td></tr>
+        <tr><th><label for="email">Email Address</label></th><td><input id="email" type="email" required></td></tr>
+        <tr><th><label for="phone">Phone Number</label></th><td><input id="phone" type="tel" required></td></tr>
+        <tr><th><label for="subject">Subject</label></th><td><input id="subject" type="text" required></td></tr>
+        <tr><th><label for="message">Message</label></th><td><textarea id="message" rows="10" required></textarea></td></tr>
+      </table>
+      <input type="button" value="Send" onclick="sendForm()">
+    </form>
+  </div>
+</div>
+</body>
+</html>

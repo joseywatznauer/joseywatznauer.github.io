@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anchor Counseling</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="stylesheet" href="../library/anchor.css">
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "header"
+      "firsttext"
+      "firstpic"
+      "secondtext"
+      "secondpic"
+      "verse"
+      "footer";
+  }
+
+  @media (min-width: 769px) {
+    .grid {
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "nav        nav"
+        "header     header"
+        "firstpic   firsttext"
+        "secondtext secondpic"
+        "verse      verse"
+        "footer     footer";
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  nav {grid-area: nav;}
+  header {grid-area: header;}
+  .firstpic {grid-area: firstpic;}
+  .firsttext {grid-area: firsttext;}
+  .secondpic {grid-area: secondpic;}
+  .secondtext {grid-area: secondtext;}
+  .verse {grid-area: verse;}
+  footer {grid-area: footer;}
+
+  header {
+    grid-area: header;
+    height: 450px;
+
+    /* PARALLAX IMAGE */
+    background-image: url("../images/banner.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* this creates the parallax effect */
+
+    position: relative;
+  }
+
+  header .overlay {
+    background-color: rgba(67, 137, 192, 0.37); /* blue overlay */
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  header h1 {
+    color: #fffff7;
+    font-size: 5em;
+    text-align: center;
+    font-family: "imFellSC", serif;
+    font-weight: 400;
+  }
+
+  .secondtext {
+    background-color: #4389c0;
+    color: #d8eaf9;
+    font-family: "Spectral", serif;
+    font-size: 1.5em;
+    padding: 20px;
+  }
+
+  .firsttext {
+    padding: 20px;
+  }
+
+  .verse {
+    background-color: #d5ad37;
+    color: #f4f2c9;
+    font-family: "Bilal", cursive;
+    font-size: 3em;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  .firsttext {
+    font-family: "Spectral", serif;
+    color: #1c3749;
+    font-size: 1.5em;
+  }
+
+  .firstpic {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    position: relative;
+  }
+
+  /* IMAGE */
+  .firstpic img {
+    grid-column: 5 / 10;
+    grid-row: 3 / 9;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  /* reuse same class */
+  .firstpic .blue-block {
+    background-color: #27599a;
+    z-index: 1;
+  }
+
+  /* individual placements */
+  .b19  { grid-column: 4 / 6;  grid-row: 2 / 4; }
+  .b115 { grid-column: 9 / 11; grid-row: 8 / 10; }
+
+
+  .secondpic {
+    display: grid;
+    grid-template-columns: repeat(41, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    position: relative;
+  }
+
+  /* IMAGE */
+  .secondpic img {
+    grid-column: 12 / 33; /* end is exclusive */
+    grid-row: 4 / 18;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  /* BLUE BLOCKS */
+  .blue-block {
+    background-color: #27599a;
+    z-index: 1;
+  }
+
+  /* Block 1 */
+  .block1 {
+    grid-column: 10 / 16;
+    grid-row: 2 / 7;
+  }
+
+  /* Block 2 */
+  .block2 {
+    grid-column: 29 / 35;
+    grid-row: 15 / 20;
+  }
+
+  strong {font-weight: 900;}
+
+  /* ===================== */
+  /* MOBILE STYLES */
+  /* ===================== */
+  @media (max-width: 768px) {
+
+    /* STACK GRID */
+    .grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "nav"
+        "header"
+        "firsttext"
+        "firstpic"
+        "secondtext"
+        "secondpic"
+        "verse"
+        "footer";
+    }
+
+    /* HEADER TEXT SCALING */
+    header {
+      height: 300px; /* shorter banner */
+      background-attachment: scroll; /* better for mobile */
+    }
+
+    header h1 {
+      font-size: 2.2em;
+      padding: 0 10px;
+    }
+
+    /* TEXT SIZE ADJUSTMENTS */
+    .firsttext,
+    .secondtext {
+      font-size: 1.1em;
+    }
+
+    .verse {
+      font-size: 1.8em;
+      padding: 12px;
+    }
+
+    /* SECOND PIC GRID SIMPLIFY (optional but recommended) */
+    .secondpic {
+      display: block;
+      text-align: center;
+    }
+
+    .secondpic img {
+      width: 80%;
+      height: auto;
+      margin: 25px auto;
+    }
+
+    /* FIRST PIC GRID SIMPLIFY */
+    .firstpic {
+      display: block;
+      text-align: center;
+    }
+
+    .firstpic img {
+      width: 80%;
+      height: auto;
+      margin: 25px auto;
+    }
+  }
+
+</style>
+<script src="../library/anchor.js"></script>
+</head>
+
+<body onload="createHeaderFooter();">
+<div class="grid">
+  <header>
+    <div class="overlay">
+      <h1>Restoration<br>Anchored in Christ</h1>
+    </div>
+  </header>
+  <div class="firstpic">
+    <div class="blue-block b19"></div>
+    <div class="blue-block b115"></div>
+
+    <img src="../images/hands.png" alt="holding hands">
+  </div>
+  <p class="firsttext">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Proin at neque eros. Praesent vestibulum interdum dapibus.
+    Nunc posuere, dolor lacinia ullamcorper sagittis, sapien
+    elit eleifend quam, a porttitor metus leo suscipit purus.<br><br>
+
+    Quisque sagittis elementum orci at porttitor. Suspendisse
+    pulvinar leo in nisi sagittis finibus. Cras ante ante,
+    egestas quis nibh interdum, tincidunt pretium eros. Nunc
+    quis quam odio. 
+  </p>
+  <div class="secondtext">
+    <h2>Lorem ipsum dolor sit amet</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Proin at neque eros. Praesent vestibulum interdum dapibus.
+      Nunc posuere, dolor lacinia ullamcorper sagittis, sapien
+      elit eleifend quam, a porttitor metus leo suscipit purus. 
+    </p>
+  </div>
+  <div class="secondpic">
+    <div class="blue-block block1"></div>
+    <div class="blue-block block2"></div>
+
+    <img src="../images/contemplate.png" alt="man watching sunset on beach">
+  </div>
+  <div class="verse">“Come to me, all who labor and are heavy laden, and I will give you rest.”</div>
+</div>
+</body>
+</html>

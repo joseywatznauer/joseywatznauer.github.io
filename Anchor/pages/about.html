@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anchor Counseling</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="stylesheet" href="../library/anchor.css">
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "profile"
+      "intro"
+      "details"
+      "education"
+      "specialties"
+      "footer";
+  }
+
+  @media (min-width: 769px) {
+    .grid {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas:
+        "nav       nav       nav       nav         nav         nav"
+        "intro     intro     profile   profile     details     details"
+        "education education education specialties specialties specialties"
+        "footer    footer    footer    footer      footer      footer";
+    }
+
+    .details p {
+      color: #d8eaf9;
+    }
+
+    .intro div, .details, li {
+      font-size: 1.5em;
+    }
+
+    .intro {
+      padding: 100px 20px 0 20px;
+    }
+
+    .profile .blue-block {
+      grid-column: 12 / 23;
+      grid-row: 1 / 27;
+      background-color: #4389c0;
+      z-index: 1;
+    }
+
+    .profile img {
+      grid-column: 3 / 21;
+      grid-row: 3 / 25;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      border: 4px solid #ca9702;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    .specialties {
+      padding: 40px 0;
+    }
+
+    .education {
+      padding: 40px;
+    }
+
+    .details {
+      padding: 130px 60px 40px 40px;
+      text-align: left;
+    }
+  }
+
+  nav {grid-area: nav;}
+  .intro {grid-area: intro;}
+  .details {grid-area: details;}
+  .profile {grid-area: profile;}
+  .education {grid-area: education;}
+  .specialties {grid-area: specialties;}
+  footer {grid-area: footer;}
+
+  body {
+    font-family: "Spectral", serif;
+  }
+
+  .profile {
+    display: grid;
+    grid-template-columns: repeat(22, 1fr);
+    grid-template-rows: repeat(26, 1fr);
+    position: relative;
+  }
+
+  h1 {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .details {
+    background-color: #4389c0;
+    color: #d8eaf9;
+  }
+
+  .education {
+    background-color: #d5ad37;
+    color: #281e00;
+    text-align: center;   
+  }
+
+  .specialties ul, .education ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+    padding-left: 1.2em;
+  }
+
+  .specialties {
+    color: #281e00;
+    text-align: center; 
+  }
+
+  .intro {
+    color: #281e00;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .intro {
+      padding: 10px 20px 20px 20px;
+    }
+
+    .profile img {
+      grid-column: 3 / 21;
+      grid-row: 3 / 27;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      border: 4px solid #ca9702;
+    }
+
+    .specialties {
+      padding: 0 0 30px 0;
+    }
+
+    .education {
+      padding: 0 30px 30px 30px; 
+    }
+
+    .details {
+      padding: 30px 60px 30px 40px;
+      text-align: justify;
+    }
+  }
+</style>
+<script src="../library/anchor.js"></script>
+</head>
+
+<body onload="createHeaderFooter();">
+<div class="grid">
+  <div class="intro">
+    <h1>Meet Steven Voss,<br>PhD, LMFT</h1>
+    <div>
+      Marriage & Family Therapist<br><br>
+      28 years in practice
+    </div>
+  </div>
+  <div class="profile">
+    <img src="../images/voss.jpeg" alt="Dr. Voss"/>
+    <div class="blue-block"></div>
+  </div>
+  <div class="details">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Proin at neque eros. Praesent vestibulum interdum dapibus.
+    Nunc posuere, dolor lacinia ullamcorper sagittis, sapien elit
+    eleifend quam, a porttitor metus leo suscipit purus. 
+  </div>
+  <div class="education">
+    <h1>Education</h1>
+    <ul>
+      <li>New Mexico Highlands University</li>
+      <li>New Orleans Baptist Theological Seminary, Ph.D., Graduated 1992</li>
+    </ul>
+  </div>
+  <div class="specialties">
+    <h1>Top Specialties</h1>
+      <ul>
+        <li>Anxiety</li>
+        <li>Depression</li>
+        <li>Relationship issues</li>
+      </ul>
+  </div>
+</div>
+</body>
+</html>

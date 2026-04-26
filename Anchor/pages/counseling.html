@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Josey Watznauer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anchor Counseling</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<link rel="stylesheet" href="../library/anchor.css">
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "header"
+      "vocation"
+      "anxiety"
+      "anxietyDescription"
+      "depression"
+      "depressionDescription"
+      "issues"
+      "issuesDescription"
+      "anger"
+      "angerDescription"
+      "footer";
+  }
+
+  @media (min-width: 1080px) {
+    .grid {
+      column-gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "nav         nav"
+        "header      header"
+        "vocation    vocation"
+        "anxiety     anxietyDescription"
+        "depression  depressionDescription"
+        "issues      issuesDescription"
+        "anger       angerDescription"
+        "footer      footer";
+    }
+  }
+
+  nav {grid-area: nav;}
+  header {grid-area: header;}
+  .vocation {grid-area: vocation;}
+  .anxiety {grid-area: anxiety;}
+  .anxietyDescription {grid-area: anxietyDescription;}
+  .depression {grid-area: depression;}
+  .depressionDescription {grid-area: depressionDescription;}
+  .issues {grid-area: issues;}
+  .issuesDescription {grid-area: issuesDescription;}
+  .anger {grid-area: anger;}
+  .angerDescription {grid-area: angerDescription;}
+  footer {grid-area: footer;}
+
+  body {
+    font-family: "Spectral", serif;
+  }
+
+  header {
+    height: 300px;
+    text-align: center;
+    color: #d8eaf9;
+    background-color: #4389c0;
+    padding: 0 200px;
+  }
+
+  header h1 {
+    font-size: 3em;
+  }
+
+  header p {
+    font-size: 1.5em;
+  }
+
+  .individuals img,
+  .couples img,
+  .families img {
+    align-items: center;
+    width: 150px;
+    height: auto;
+  }
+
+  .couples img {
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .anxietyDescription,
+  .depressionDescription,
+  .issuesDescription,
+  .angerDescription {
+    font-size: 1.5em;
+    margin: 0 200px 50px 0;
+  }
+
+  .individuals div,
+  .couples div,
+  .families div {
+    font-size: 1em;
+  }
+
+  .individuals, .couples,
+  .families {
+    margin: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .vocation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    padding: 20px;
+    margin: 45px 85px;
+    background-color: #d5ad37;
+  }
+
+  .vocation, .anxiety,
+  .anxietyDescription,
+  .depression, .issues,
+  .depressionDescription,
+  .issuesDescription,
+  .anger, .angerDescription {
+    color: #281e00;
+  }
+
+  .anxiety, .depression,
+  .issues, .anger {
+    align-self: start;   /* top of grid cell */
+    text-align: center;
+  }
+
+  /* ===================== */
+  /* MOBILE STYLES */
+  /* ===================== */
+  @media (max-width: 1079px) {
+
+    /* GENERAL TEXT SCALING */
+    body {
+      font-size: 0.95em;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.4em;
+    }
+
+    /* HEADER FIX */
+    header {
+      padding: 20px;           /* remove huge side padding */
+      height: auto;            /* let it grow naturally */
+    }
+
+    header p {
+      font-size: 1.1em;
+    }
+
+    /* VOCATION FIX */
+    .vocation {
+      grid-template-columns: 1fr;   /* stack instead of 3 columns */
+      margin: 20px;                 /* remove huge margins */
+      padding: 15px;
+      gap: 20px;
+    }
+
+    .individuals,
+    .couples,
+    .families {
+      margin: 0;                   /* remove side margins */
+    }
+
+    /* DESCRIPTION TEXT FIX */
+    .anxietyDescription,
+    .depressionDescription,
+    .issuesDescription,
+    .angerDescription {
+      margin: 0 20px 30px 20px;    /* reasonable spacing */
+      font-size: 1.1em;
+    }
+
+    /* SECTION HEADINGS FIX */
+    .anxiety,
+    .depression,
+    .issues,
+    .anger {
+      margin-top: 20px;
+    }
+  }
+
+</style>
+<script src="../library/anchor.js"></script>
+</head>
+
+<body onload="createHeaderFooter();">
+<div class="grid">
+  <header>
+    <h1>Counseling</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Proin at neque eros. Praesent vestibulum interdum dapibus.
+      Nunc posuere, dolor lacinia ullamcorper sagittis, sapien elit
+      eleifend quam, a porttitor metus leo suscipit purus. 
+    </p>
+  </header>
+  <div class="vocation">
+    <div class="individuals">
+      <img src="../images/individual.png" alt="individual"/>
+      <h2>Individuals</h2>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Proin at neque eros. 
+      </div>
+    </div>
+
+    <div class="couples">
+      <img src="../images/couple.png" alt="couple"/>
+      <h2>Couples</h2>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Proin at neque eros. 
+      </div>
+    </div>
+
+    <div class="families">
+      <img src="../images/family.png" alt="family"/>
+      <h2>Families</h2>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Proin at neque eros. 
+      </div>
+    </div>
+  </div>
+
+  <div class="anxiety">
+    <h2>Anxiety</h2>
+  </div>
+
+  <div class="anxietyDescription">
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Proin at neque eros. Praesent vestibulum interdum dapibus.
+    </div>
+  </div>
+
+  <div class="depression">
+    <h2>Depression</h2>
+  </div>
+
+  <div class="depressionDescription">
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Proin at neque eros. Praesent vestibulum interdum dapibus.
+    </div>
+  </div>
+
+  <div class="issues">
+    <h2>Sexual Issues</h2>
+  </div>
+
+  <div class="issuesDescription">
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Proin at neque eros. Praesent vestibulum interdum dapibus.
+    </div>
+  </div>
+
+  <div class="anger">
+    <h2>Anger Management</h2>
+  </div>
+
+  <div class="angerDescription">
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Proin at neque eros. Praesent vestibulum interdum dapibus.
+    </div>
+  </div>
+</div>
+</body>
+</html>
