@@ -1,6 +1,6 @@
-/* ===================== */
-/* BASE & TYPOGRAPHY */
-/* ===================== */
+/* Josey Watznauer */
+
+/* Base & fonts */
 
 body {
   background-color: #f4f2c9;
@@ -27,16 +27,14 @@ body {
   src: url("../fonts/Bilal.otf") format("opentype");
 }
 
-/* ======================= */
-/* UNIVERSAL NAV & FOOTER */
-/* ======================= */
+/* Nav & Footer */
 
 nav {
   background-color: #27599a;
   border-bottom: 4px solid #ca9702;
-  display: flex;                     /* enables horizontal layout */
-  align-items: center;               /* vertical centering */
-  justify-content: space-between;    /* logo left, links right */
+  display: flex; /* enables horizontal layout */
+  align-items: center; /* vertical centering */
+  justify-content: space-between; /* logo left, links right */
   padding: 0 20px;
 }
 
@@ -45,8 +43,10 @@ nav ul {
   padding: 0;
 }
 
+strong {font-weight: bold;}
+
 nav li {
-  display: inline-block;
+  display: inline-block; /* items line up horizontally but still have spacing and size control */
   list-style: none;
   margin: 0 14px;
   font-size: 1.5em;
@@ -65,7 +65,9 @@ nav img {
   margin: 20px 0;
 }
 
-nav li a::after {
+/* Pseudo-class selector, for changing underline in nav bar */
+/* CSS animation */
+nav li a::after { 
   content: "";
   position: absolute;
   left: 0;
@@ -93,9 +95,8 @@ footer {
   gap: 10px;
 }
 
-/* ===================== */
-/* DESKTOP STYLES */
-/* ===================== */
+/* Deskop Styles */
+
 @media (min-width: 769px) {
 
   nav {
@@ -115,13 +116,16 @@ footer {
     border-top: 4px solid #27599a;
   }
 
-  footer img {
+  footer a {
     grid-column: 1;
-    justify-self: start;
+    justify-self: start; /* goes to left of grid column */
+  }
+
+  footer a img {
     height: 60px;
     width: auto;
     margin: 20px 0;
-    padding: 30px; 
+    padding: 30px;
   }
 
   .map {
@@ -144,14 +148,11 @@ footer {
   }
 }
 
-/* ===================== */
-/* MOBILE STYLES */
-/* ===================== */
-@media (max-width: 768px) {
+/* Mobile Styles */
 
-  /* NAV: stack logo + links */
+@media (max-width: 768px) {
   nav {
-    flex-direction: column;
+    flex-direction: column; /* stacks everything */
     align-items: center;
     text-align: center;
   }
@@ -163,33 +164,37 @@ footer {
   nav li {
     display: block;
     margin: 8px 0;
-    font-size: 1.2em; /* smaller text */
+    font-size: 1.5em;
   }
 
   nav img,
   footer img {
     max-width: 100%;
-    height: auto;   /* prevents stretching */
+    height: auto;
   }
 
   nav img {
-    height: 60px; /* slightly smaller */
+    height: 60px;
   }
 
-  /* FOOTER: stack everything */
   footer {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* stacks everything */
     text-align: center;
     gap: 10px;
   }
 
+  footer a {
+    order: 4; /* pushes logo to bottom */
+  }
+
   footer img {
-    order: 3; /* pushes logo to bottom */
     margin: 10px auto 0 auto;
+    height: 40px;
   }
 
   footer div {
-    grid-column: auto !important; /* removes inline grid placement */
+    font-size: 1.2rem;
+    grid-column: auto !important; /* changes the priority (more specific) to override previous grid-column rules */
   }
 
   .map iframe {
