@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -16,13 +16,13 @@
       "header"
       "vocation"
       "anxiety"
-      "anxietyDescription"
+      "anxiety-description"
       "depression"
-      "depressionDescription"
+      "depression-description"
       "issues"
-      "issuesDescription"
+      "issues-description"
       "anger"
-      "angerDescription"
+      "anger-description"
       "footer";
   }
 
@@ -34,10 +34,10 @@
         "nav         nav"
         "header      header"
         "vocation    vocation"
-        "anxiety     anxietyDescription"
-        "depression  depressionDescription"
-        "issues      issuesDescription"
-        "anger       angerDescription"
+        "anxiety     anxiety-description"
+        "depression  depression-description"
+        "issues      issues-description"
+        "anger       anger-description"
         "footer      footer";
     }
   }
@@ -46,13 +46,13 @@
   header {grid-area: header;}
   .vocation {grid-area: vocation;}
   .anxiety {grid-area: anxiety;}
-  .anxietyDescription {grid-area: anxietyDescription;}
+  .anxiety-description {grid-area: anxiety-description;}
   .depression {grid-area: depression;}
-  .depressionDescription {grid-area: depressionDescription;}
+  .depression-description {grid-area: depression-description;}
   .issues {grid-area: issues;}
-  .issuesDescription {grid-area: issuesDescription;}
+  .issues-description {grid-area: issues-description;}
   .anger {grid-area: anger;}
-  .angerDescription {grid-area: angerDescription;}
+  .anger-description {grid-area: anger-description;}
   footer {grid-area: footer;}
 
   body {
@@ -91,10 +91,10 @@
     font-size: 2em;
   }
 
-  .anxietyDescription,
-  .depressionDescription,
-  .issuesDescription,
-  .angerDescription {
+  .anxiety-description,
+  .depression-description,
+  .issues-description,
+  .anger-description {
     font-size: 1.5em;
     margin: 0 200px 50px 0;
   }
@@ -124,11 +124,11 @@
   }
 
   .vocation, .anxiety,
-  .anxietyDescription,
+  .anxiety-description,
   .depression, .issues,
-  .depressionDescription,
-  .issuesDescription,
-  .anger, .angerDescription {
+  .depression-description,
+  .issues-description,
+  .anger, .anger-description {
     color: #281e00;
   }
 
@@ -138,12 +138,10 @@
     text-align: center;
   }
 
-  /* ===================== */
-  /* MOBILE STYLES */
-  /* ===================== */
+  /* This mobile style breaks at a different place */
+  /* because it needed to to look good */
   @media (max-width: 1079px) {
 
-    /* GENERAL TEXT SCALING */
     body {
       font-size: 0.95em;
     }
@@ -156,20 +154,18 @@
       font-size: 1.4em;
     }
 
-    /* HEADER FIX */
     header {
-      padding: 20px;           /* remove huge side padding */
-      height: auto;            /* let it grow naturally */
+      padding: 20px;
+      height: auto;
     }
 
     header p {
       font-size: 1.1em;
     }
 
-    /* VOCATION FIX */
     .vocation {
-      grid-template-columns: 1fr;   /* stack instead of 3 columns */
-      margin: 20px;                 /* remove huge margins */
+      grid-template-columns: 1fr; /* stack instead of 3 columns */
+      margin: 20px;
       padding: 15px;
       gap: 20px;
     }
@@ -177,15 +173,14 @@
     .individuals,
     .couples,
     .families {
-      margin: 0;                   /* remove side margins */
+      margin: 0;
     }
 
-    /* DESCRIPTION TEXT FIX */
-    .anxietyDescription,
-    .depressionDescription,
-    .issuesDescription,
-    .angerDescription {
-      margin: 0 20px 30px 20px;    /* reasonable spacing */
+    .anxiety-description,
+    .depression-description,
+    .issues-description,
+    .anger-description {
+      margin: 0 20px 30px 20px;
       font-size: 1.1em;
     }
 
@@ -202,7 +197,7 @@
 <script src="../library/anchor.js"></script>
 </head>
 
-<body onload="createHeaderFooter();">
+<body onload="createNavFooter();">
 <div class="grid">
   <header>
     <h1>Counseling</h1>
@@ -242,11 +237,11 @@
     </div>
   </div>
 
-  <div class="anxiety">
+  <div class="anxiety" id="anxiety">
     <h2>Anxiety</h2>
   </div>
 
-  <div class="anxietyDescription">
+  <div class="anxiety-description">
     <div>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Proin at neque eros. Praesent vestibulum interdum dapibus.
@@ -257,7 +252,7 @@
     <h2>Depression</h2>
   </div>
 
-  <div class="depressionDescription">
+  <div class="depression-description">
     <div>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Proin at neque eros. Praesent vestibulum interdum dapibus.
@@ -265,10 +260,10 @@
   </div>
 
   <div class="issues">
-    <h2>Sexual Issues</h2>
+    <h2>Relationship Issues</h2>
   </div>
 
-  <div class="issuesDescription">
+  <div class="issues-description">
     <div>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Proin at neque eros. Praesent vestibulum interdum dapibus.
@@ -279,7 +274,7 @@
     <h2>Anger Management</h2>
   </div>
 
-  <div class="angerDescription">
+  <div class="anger-description">
     <div>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Proin at neque eros. Praesent vestibulum interdum dapibus.
