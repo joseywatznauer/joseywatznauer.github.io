@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -15,7 +15,7 @@
       "nav"
       "profile"
       "intro"
-      "details"
+      "section"
       "education"
       "specialties"
       "footer";
@@ -26,17 +26,17 @@
       grid-template-columns: repeat(6, 1fr);
       grid-template-areas:
         "nav       nav       nav       nav         nav         nav"
-        "intro     intro     profile   profile     details     details"
+        "intro     intro     profile   profile     section     section"
         "education education education specialties specialties specialties"
         "footer    footer    footer    footer      footer      footer";
     }
 
-    .details p {
+    section p {
       color: #d8eaf9;
     }
 
-    .intro div, .details, li {
-      font-size: 1.5em;
+    .intro div, section, .education ul, li {
+      font-size: 1.5rem; /* rem bases it off root size, em builds exponentially */
     }
 
     .intro {
@@ -72,7 +72,7 @@
       padding: 40px;
     }
 
-    .details {
+    section {
       padding: 130px 60px 40px 40px;
       text-align: left;
     }
@@ -80,7 +80,7 @@
 
   nav {grid-area: nav;}
   .intro {grid-area: intro;}
-  .details {grid-area: details;}
+  section {grid-area: section;}
   .profile {grid-area: profile;}
   .education {grid-area: education;}
   .specialties {grid-area: specialties;}
@@ -102,7 +102,7 @@
     text-align: center;
   }
 
-  .details {
+  section {
     background-color: #4389c0;
     color: #d8eaf9;
   }
@@ -113,7 +113,7 @@
     text-align: center;   
   }
 
-  .specialties ul, .education ul {
+  .specialties ol, .education ul {
     display: inline-block;
     text-align: left;
     margin: 0 auto;
@@ -153,7 +153,7 @@
       padding: 0 30px 30px 30px; 
     }
 
-    .details {
+    section {
       padding: 30px 60px 30px 40px;
       text-align: justify;
     }
@@ -162,7 +162,7 @@
 <script src="../library/anchor.js"></script>
 </head>
 
-<body onload="createHeaderFooter();">
+<body onload="createNavFooter();">
 <div class="grid">
   <div class="intro">
     <h1>Meet Steven Voss,<br>PhD, LMFT</h1>
@@ -175,26 +175,42 @@
     <img src="../images/voss.jpeg" alt="Dr. Voss"/>
     <div class="blue-block"></div>
   </div>
-  <div class="details">
+  <section>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Proin at neque eros. Praesent vestibulum interdum dapibus.
     Nunc posuere, dolor lacinia ullamcorper sagittis, sapien elit
     eleifend quam, a porttitor metus leo suscipit purus. 
-  </div>
+  </section>
   <div class="education">
-    <h1>Education</h1>
-    <ul>
-      <li>New Mexico Highlands University</li>
-      <li>New Orleans Baptist Theological Seminary, Ph.D., Graduated 1992</li>
+    <h1>Education</h1> 
+    <ul> <!-- nested ul -->
+      <li>
+        Southwestern Baptist Theological Seminary
+        <ul>
+          <li>M.A., Counseling</li>
+        </ul>
+        </li>
+      <li>
+        New Mexico Highlands University<br>
+        <ul>
+          <li>M.S., Psychology</li>
+        </ul>
+      </li>
+      <li>
+        New Orleans Baptist Theological Seminary
+        <ul>
+          <li>Ph.D., Counseling Education and Supervision</li>
+        </ul>
+      </li>
     </ul>
   </div>
   <div class="specialties">
     <h1>Top Specialties</h1>
-      <ul>
+      <ol> <!-- ol -->
         <li>Anxiety</li>
         <li>Depression</li>
         <li>Relationship issues</li>
-      </ul>
+      </ol>
   </div>
 </div>
 </body>
