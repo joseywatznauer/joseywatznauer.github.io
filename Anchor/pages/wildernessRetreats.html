@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -13,9 +13,9 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "nav"
-      "description"
+      "article"
       "picture"
-      "details"
+      "main"
       "footer";
   }
 
@@ -24,17 +24,17 @@
       column-gap: 20px;
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
-        "nav           nav"
-        "description   picture"
-        "details     details"
-        "footer      footer";
+        "nav       nav"
+        "article   picture"
+        "main      main"
+        "footer    footer";
     }
 
-    .description h1 {
+    article h1 {
       padding: 80px 0 0 0;
     }
 
-    .description p {
+    article p {
       color: #281e00;
       padding: 0 55px;
     }
@@ -62,7 +62,7 @@
       z-index: 1;
     }
 
-    .details {
+    main {
       color: #d8eaf9;
       padding: 40px 0;
       background-color: #4389c0;
@@ -71,15 +71,15 @@
       position: relative;
     }
 
-    .details > div {
+    main > div { /* child selector */
       grid-column: 2;
     }
   }
 
   nav {grid-area: nav;}
-  .description {grid-area: description;}
+  article {grid-area: article;}
   .picture {grid-area: picture;}
-  .details {grid-area: details;}
+  main {grid-area: main;}
   footer {grid-area: footer;}
 
   body {
@@ -96,27 +96,27 @@
     line-height: 1.15;
   }
 
-  
-  /* ===================== */
-  /* MOBILE STYLES */
-  /* ===================== */
+  audio {
+    display: block;
+    margin: 20px auto;
+  }
+
   @media (max-width: 768px) {
 
-    /* GENERAL TEXT SCALING */
     body {
       font-size: 0.95em;
     }
 
-    .details h1 {
+    main h1 {
       font-size: 2em;
     }
 
-    .description h1 {
+    article h1 {
       font-size: 2em;
       padding: 40px 0 0 0;
     }
 
-    .description p {
+    article p {
       color: #281e00;
       padding: 0 40px;
     }
@@ -144,38 +144,40 @@
       z-index: 1;
     }
 
-    .details {
+    main {
       color: #d8eaf9;
       padding: 0 40px 20px 40px;
       background-color: #4389c0;
     }
   }
-
 </style>
 <script src="../library/anchor.js"></script>
 </head>
 
-<body onload="createHeaderFooter();">
+<body onload="createNavFooter();">
 <div class="grid">
-  <div class="description">
+  <article>
     <h1>Wilderness Retreats & Counseling</h1>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Proin at neque eros. Praesent vestibulum interdum dapibus.
-      Nunc posuere, dolor lacinia ullamcorper sagittis, sapien elit
-      eleifend quam, a porttitor metus leo suscipit purus.<br><br>
-
+      At this wilderness retreat, there will be <em>many</em> cool things. <!-- em -->
+      <span style="font-style: italic;">And I do mean many.</span> <!-- span and inline style -->
+      <cite>The Shining</cite> takes place in <abbr title="Colorado">CO</abbr>. <!-- cite and abbr -->
+      You can watch it <a href="https://www.youtube.com/watch?v=BV3LzeiaTvU">here</a>, <!-- external link -->
+      then go to <a href="counseling.html#anxiety">counseling for anxiety</a>. <!-- internal anchor link -->
+      <br>
+      <br>
       Quisque sagittis elementum orci at porttitor. Suspendisse
       pulvinar leo in nisi sagittis finibus. Cras ante ante, egestas
-      quis nibh interdum, tincidunt pretium eros. Nunc quis quam odio.
-      Etiam vehicula ullamcorper nisl, at gravida est dictum sit amet. 
+      quis nibh interdum, tincidunt pretium eros.
+      Here's what Colorado sounds like:
     </p>
-  </div>
+    <audio src="../audio/colorado.mp3" preload="auto" controls></audio> <!-- audio -->
+  </article>
   <div class="picture">
     <img src="../images/mountains.png" alt="mountains">
     <div class="blue-block"></div>
   </div>
-  <div class="details">
+  <main> <!-- main -->
     <div>
       <h1>Details</h1>
       <p>
@@ -185,7 +187,7 @@
         eleifend quam, a porttitor metus leo suscipit purus.
       </p>
     </div>
-  </div>
+  </main>
 </div>
 </body>
 </html>
