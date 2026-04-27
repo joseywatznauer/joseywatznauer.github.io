@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -24,7 +24,7 @@
       grid-template-columns: 1fr 2fr;
       grid-template-areas:
         "nav      nav"
-        "aside   blank"
+        "aside    blank"
         "form     form"
         "footer   footer";
     }
@@ -51,7 +51,7 @@
     }
 
     h1 {font-size: 2.5em;}
-    p{font-size: 1.5em;}
+    p {font-size: 1.5em;}
     input[type="button"] {font-size: 1.75em;}
     th {font-size: 1.75em;}
     th, td {padding: 12px;}
@@ -75,7 +75,7 @@
     font-family: "Spectral", serif;
   }
 
-  h1 {text-align: center;}
+  #contact {text-align: center;} /* id selector */
 
   p {line-height: 1.15;}
 
@@ -102,16 +102,20 @@
     width: 75%;
   }
 
+  #title {
+    text-align: center;
+  }
+
   input,
   textarea {
-    border-radius: 0;            /* square corners */
-    background-color: #f4f2c9;   /* fill color */
+    border-radius: 0; /* square corners */
+    background-color: #f4f2c9;
     border: none;
     padding: 8px;
     font-family: inherit;
     font-size: 1em;
     width: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box; /* so width includes content, padding, and border */
   }
 
   input[type="button"] {
@@ -123,8 +127,8 @@
     width: auto;
     position: absolute;
     left: 50%;
-    bottom: 0px; /* pulls it halfway out */
-    transform: translateX(-50%);
+    bottom: 0; /* pulls it halfway out */
+    transform: translateX(-50%); /* moves the element left/right by a percentage of its own width */
   }
 
   
@@ -170,80 +174,26 @@
 </style>
 <script src="../library/anchor.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init("Edpbb7RVwPXmhBn0c"); // from EmailJS
-  })();
-
-  function sendForm() {
-
-    // ✅ Collect inputs into array (this satisfies your "loop" requirement)
-    var fields = ["first", "last", "email", "phone", "subject", "message"];
-    var data = {};
-    var valid = true;
-
-    // ✅ Loop for validation
-    for (var i = 0; i < fields.length; i++) {
-      var value = document.getElementById(fields[i]).value.trim();
-
-      if (value === "") {
-        alert("Please fill out the " + fields[i] + " field.");
-        valid = false;
-        break;
-      }
-
-      data[fields[i]] = value;
-    }
-
-    if (!valid) return;
-
-    // ✅ Simple email validation
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(data.email)) {
-      alert("Please enter a valid email.");
-      return;
-    }
-
-    // ✅ Send via EmailJS
-    emailjs.send("anchorcounseling", "anchorcounselingtemplate", {
-      first_name: data.first,
-      last_name: data.last,
-      email: data.email,
-      phone: data.phone,
-      subject: data.subject,
-      message: data.message
-    })
-    .then(function(response) {
-
-      // ✅ Replace form with success message
-      var formContainer = document.querySelector(".form form");
-
-      formContainer.innerHTML = `
-        <div style="
-          background-color:#d5ad37;
-          padding:60px;
-          text-align:center;
-          font-size:1.5em;
-          color:#281e00;
-        ">
-          Your message was sent successfully.<br>
-          We will be in contact with you shortly.
-        </div>
-      `;
-
-    }, function(error) {
-      alert("Something went wrong. Please try again.");
-    });
-  }
-</script>
 </head>
 
-<body onload="createHeaderFooter();">
+<body onload="createNavFooter();">
+<noscript> <!-- noscript -->
+  <div style="
+    background-color:#d5ad37;
+    color:#281e00;
+    padding:20px;
+    text-align:center;
+    font-size:1.2em;
+  ">
+    JavaScript is not enabled for your browser.<br>
+    Please call Dr. Voss at (660) 349-7395 or email him at stevenvoss@gmail.com
+  </div>
+</noscript>
 <div class="grid">
-  <aside>
-    <h1>Contact</h1>
+  <aside> <!--aside-->
+    <h1 id="contact">Contact</h1>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      After you fill in the form, press <code>Send</code> to send the message. <!-- code -->
     </p>
   </aside>
   <div class="blank"></div>
@@ -251,14 +201,40 @@
     <div class="blue-block"></div>
     <form>
       <table>
-        <tr><th><label for="first">First Name</label></th><td><input id="first" type="text" required></td></tr>
-        <tr><th><label for="last">Last Name</label></th><td><input id="last" type="text" required></td></tr>
-        <tr><th><label for="email">Email Address</label></th><td><input id="email" type="email" required></td></tr>
-        <tr><th><label for="phone">Phone Number</label></th><td><input id="phone" type="tel" required></td></tr>
-        <tr><th><label for="subject">Subject</label></th><td><input id="subject" type="text" required></td></tr>
-        <tr><th><label for="message">Message</label></th><td><textarea id="message" rows="10" required></textarea></td></tr>
+        <thead> <!-- thead -->
+          <tr>
+            <th id="title" colspan="2">Email Dr. Voss</th> <!-- colspan -->
+          </tr>
+        </thead>
+
+        <tbody> <!-- tbody -->
+          <tr>
+            <th><label for="first">First Name</label></th>
+            <td><input id="first" type="text" required></td>
+          </tr>
+          <tr>
+            <th><label for="last">Last Name</label></th>
+            <td><input id="last" type="text" required></td>
+          </tr>
+          <tr>
+            <th><label for="email">Email Address</label></th>
+            <td><input id="email" type="email" required></td>
+          </tr>
+          <tr>
+            <th><label for="phone">Phone Number</label></th>
+            <td><input id="phone" type="tel" required></td>
+          </tr>
+          <tr>
+            <th><label for="subject">Subject</label></th>
+            <td><input id="subject" type="text" required></td>
+          </tr>
+          <tr>
+            <th><label for="message">Message</label></th>
+            <td><textarea id="message" rows="10" required></textarea></td>
+          </tr>
+        </tbody>
       </table>
-      <input type="button" value="Send" onclick="sendForm()">
+      <input type="button" value="Send" onclick="sendForm()"> <!-- event handler -->
     </form>
   </div>
 </div>
