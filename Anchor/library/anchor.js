@@ -102,7 +102,7 @@ function createNavFooter() {
 // This function intiates EmailJS
 
 (function(){
-  emailjs.init("Edpbb7RVwPXmhBn0c");
+  emailjs.init("GUFOzohK_HJYzAa5Q");
 })(); // end function
 
 // This function sends the email with the information from the form
